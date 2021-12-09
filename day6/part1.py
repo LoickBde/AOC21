@@ -12,7 +12,7 @@ nbDays = 80
 state = np.array(initialState)
 
 for i in range(1, nbDays+1):
-    state -= 1 # wtf
+    state -= 1
     for j in range(0, len(state)) :
         if state[j] == -1:
             state[j] = 6
