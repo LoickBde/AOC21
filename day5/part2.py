@@ -37,10 +37,23 @@ for pos in coordinates :
             ventsMap[y1:y2+1, x1] +=1
         else : 
             ventsMap[y2:y1+1, x1] +=1
-    elif y1 == y2: #cas colonne, attention inversion avec lecture tableau et réalité
+    elif y1 == y2 : #cas colonne, attention inversion avec lecture tableau et réalité
         if x1 < x2 :
             ventsMap[y1, x1:x2+1] +=1
         else : 
             ventsMap[y1, x2:x1+1] +=1
-
+    else : # cas diagonales
+        xCurrent = x1
+        yCurrent = y1
+        for i in range(0, abs(x1 - x2)+1):
+            ventsMap[yCurrent, xCurrent] +=1
+            if x1 > x2: # savoir le sens
+                xCurrent -= 1
+            else:
+                xCurrent += 1
+            if y1 > y2: # savoir le sens
+                yCurrent -= 1
+            else:
+                yCurrent += 1
+        
 print(np.count_nonzero(ventsMap >= 2))
